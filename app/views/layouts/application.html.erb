@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+	Logged in as <strong><%= current_user.email %></strong>.
+<% else %>
+<% end %>
+
 <%= yield %>
 
 </body>

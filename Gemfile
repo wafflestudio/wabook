@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Using old attributes style
+gem 'protected_attributes'
+
+# Adding Authentication with Devise
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 

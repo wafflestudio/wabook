@@ -52,6 +52,7 @@
   <% end %>
 
 
+  <%= link_to "이전", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
   <% @totalPageList.each do |page| %>
     <% if page == @current_page.to_i %>
       <b id="currPageNum"><%= page %></b>
@@ -59,6 +60,7 @@
       <a id="pageNum" href="/pagination?current_page=<%= page %>"><%= page %></a>
     <% end %>
   <% end %>
+  <%= link_to "다음", pagination_path(:current_page => (@current_page.to_i+1).to_s) %>
 
 
   <div id="search">
@@ -71,6 +73,4 @@
       <input name="search_query" type="text" class="searchbox" />
       <input type="submit" value="검색" />
     </form>
-
-
   </div>

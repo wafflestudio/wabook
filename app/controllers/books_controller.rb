@@ -1,16 +1,28 @@
 class BooksController < ApplicationController
   include ApplicationHelper
   include BooksHelper
-  
+ 
   def index
-	redirect_to :action => "pagination", :current_page => 1
+	redirect_to pagination_path(:current_page => 1)
+  end
+
+  def new
+  	@book = Book.new
+	@isRegistered = params[:isRegistered]
+	@incorrectISBN = params[:incorrectISBN]
   end
 
   def create
-	if isRegistered?(params[:isbn])
-		redirect_to :action => "new", :isRegisterd=> true
+  	@book = Book.new(book_params)
+	@incorrectISBN = !isCorrectISBN?(book_params[:isbn])
+	@isRegistered = isRegistered?(book_params[:isbn])
+
+	if @incorrectISBN
+		render :action => "new", :incorrectISBN => true
+	elsif @isRegistered
+		render :action => "new", :isRegistered=> true
 	else
-		@book = Book.new(getBookFromISBN(params[:isbn]))
+		@book = Book.new(getBookFromISBN(book_params[:isbn]))
 		@book.save
 		redirect_to books_path
 	end
@@ -31,15 +43,17 @@ class BooksController < ApplicationController
   def destory
   end
 
-  def new
-  	@newbook = Book.new
-  end
 
   def pagination
     require 'nokogiri' 
     require 'open-uri' 
     rowsPerPage = 10;
     @current_page = params[:current_page]
+
+	if @current_page.to_i < 1
+		@current_page = 1.to_s
+	end
+
     @books = Book.page(@current_page).per(rowsPerPage)
     @totalCnt = Book.all.count
     @totalPageList = getTotalPageList(@totalCnt, rowsPerPage)
@@ -47,6 +61,11 @@ class BooksController < ApplicationController
       doc = Nokogiri::XML(open('http://book.interpark.com/api/search.api?key=BB76C57E2E5D09210AD11705A6102C4A9F469F0EA24C2BAF365CCF8A0DF81BCB&query=' + book.isbn + '&queryType=isbn'))  
       book.data = {cover: doc.xpath("//item[1]/coverLargeUrl").text, 
         description: doc.xpath("//item/description").text }
-    end 
+    end
   end
-end
+  
+  private
+  def book_params
+  	params.require(:book).permit(:isbn)
+  end
+end 

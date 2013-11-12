@@ -1,4 +1,10 @@
 <h1>New Book</h1>
+<% if @incorrectISBN %>
+	<h4> 존재하지 않는 도서입니다. </h4>
+<% end %>
+<% if @isRegistered %>
+	<h4> 이미 등록된 도서입니다.</h4>
+<% end %>
 
 <%= render 'form' %>
 

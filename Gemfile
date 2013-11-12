@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'kaminari'
+
 # Using old attributes style
 gem 'protected_attributes'
 
@@ -8,6 +10,8 @@ gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+gem 'thin'
+gem 'nokogiri'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

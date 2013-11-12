@@ -1,7 +1,12 @@
 Wabook::Application.routes.draw do
-  root :to => "books#index"
-  resources :books
   devise_for :users
+
+  root :to => "books#index"
+
+  resources :books
+
+  get '/pagination' => "books#pagination"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

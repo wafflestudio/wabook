@@ -1,11 +1,19 @@
 class BooksController < ApplicationController
   include ApplicationHelper
+  include BooksHelper
   
   def index
 	redirect_to :action => "pagination", :current_page => 1
   end
 
   def create
+	if isRegistered?(params[:isbn])
+		redirect_to :action => "new", :isRegisterd=> true
+	else
+		@book = Book.new(getBookFromISBN(params[:isbn]))
+		@book.save
+		redirect_to books_path
+	end
   end
 
   def edit
@@ -24,6 +32,7 @@ class BooksController < ApplicationController
   end
 
   def new
+  	@newbook = Book.new
   end
 
   def pagination

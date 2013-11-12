@@ -1,0 +1,10 @@
+<%= form_for(@newbook) do |f| %>
+	<div class="field">
+		<%= f.label :isbn %>
+		<%= f.text_field :isbn %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

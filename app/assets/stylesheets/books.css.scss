@@ -1,3 +1,157 @@
-// Place all the styles related to the Books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#c {
+  clear:both;
+}
+#categorize {
+  float:right;
+  margin-top:10px;
+}
+#booklist {
+  width:100%;
+  margin-top:20px;
+  display:inline-block;
+}
+
+.booktop, .bookClass {
+  margin-top:4px;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+p.categorize {
+}
+
+p.category {
+
+  width:10%;
+}
+
+p.title {
+
+  width:35%;
+}
+
+p.author {
+  width:20%;
+}
+
+p.publisher {
+  width:20%;
+}
+
+p.reservation {
+  width:15%;
+}
+
+button.reservation {
+  margin-top:1px;
+  width:15%;
+}
+
+p.available {
+
+  width:15%;
+}
+
+button.available {
+  margin-top:0;
+  width:15%;
+}
+
+#booktop {
+  height:20px;       
+  margin-top:4px;
+  background-color:#FA3273;
+}
+
+.book{
+  margin-top:4px;
+}
+
+.outside {
+  height:auto;
+  padding-bottom:4px;
+}
+
+.outside:after {
+  content:"";
+  display:block;
+  clear:both;
+}
+
+.content{
+  padding:30px;
+  background-color:#e9e8e3;
+  display: none;
+}
+
+.contentClass{
+  margin-top:10px;
+  display:inline-block;
+}
+.pic{
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width:197px;
+  height:275px;
+}
+p.title.contentClass{
+  display:inline-block;
+  width:auto;
+  font-size:15px;
+}
+p.category.contentClass{
+
+}
+p.publisher.contentClass{
+
+}
+p.description{
+
+}
+#nav {
+  float:right;
+  font-size:14px;
+}
+a.logo {
+  float:left;
+}
+
+a.link {
+  margin-right:15px;
+}
+
+a:link {
+  color:#646464;
+  text-decoration:none;
+
+}
+a:visited {
+  text-decoration:none;
+}
+a:hover {
+  color:#FF1493;
+}
+
+#currPageNum {
+  display:inline-block;
+  font-size:20px;
+  color:#FA3273;
+}
+#pageNum {
+  display:inline-block;
+}
+#search {
+  text-align:center;
+  margin-top:40px;
+  margin-bottom:100px;
+}
+
+input.searchbox {
+  width:350px;
+}
+
+#panel {
+  display:none;
+}

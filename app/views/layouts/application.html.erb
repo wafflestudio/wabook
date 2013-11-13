@@ -15,14 +15,13 @@
   
   <div id="nav">
     <%= link_to "책 신규등록", new_book_path, :class =>"link" %>
-    
-    <%= link_to "명예의 전당", books_path, :class =>"link" %>
+    <%= link_to "명예의 전당", users_path, :class =>"link" %>
 
     <% if !signed_in? %>
         <%= link_to "login", new_user_session_path, :method => :create, :class => "link" %>
     <% else %>
-        <%= link_to "My Page", user_path(current_user.id), :class =>"link" %>
-        <%= link_to "logout", destroy_user_session_path, :method => :delete, :class =>"link" %>
+        <%= link_to "My Page", user_path(current_user), :class =>"link" %>
+        <%= link_to "logout", destroy_user_session_path, :method => :delete, :class =>"link" %>  
     <% end %>
   </div>
 

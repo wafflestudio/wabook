@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 20131113053439) do
     t.datetime "updated_at"
   end
 
-  create_table "checkout_lists", force: true do |t|
-    t.integer  "book_id"
-    t.integer  "user_id"
-    t.datetime "checkoutdate"
-    t.datetime "duedate"
-    t.boolean  "returned"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "checkouts", force: true do |t|
     t.integer  "book_id"
     t.integer  "user_id"
@@ -57,6 +47,10 @@ ActiveRecord::Schema.define(version: 20131113053439) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

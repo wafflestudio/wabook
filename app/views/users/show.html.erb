@@ -1,0 +1,35 @@
+<div id="mybooklist">
+
+  <p class="mybooklist">나의 대출 현황</p>
+  <div id="booktop">
+    <p class="order booktop">순번</p>
+    <p class="title booktop">책제목</p>
+    <p class="author booktop">저자</p>
+    <p class="lendDate booktop">대출일</p>
+    <p class="dueDate booktop">반납예정일</p>
+    <p class="prolong booktop">연장</p>
+    <p class="return booktop">반납</p>
+ </div>
+
+ <% @curr_checkouts.each do |c| %>
+   <%= render 'current', :checkout => c %>
+ <% end %>
+
+</div>
+
+<div id="prevlist">
+
+  <p class="prevlist">이전 대출 내역</p>
+
+  <div id="booktop">
+    <p class="order booktop">순번</p>
+    <p class="title booktop">책제목</p>
+    <p class="author booktop">저자</p>
+    <p class="lendDate booktop">대출일</p>
+    <p class="returnDate booktop">반납일</p>
+  </div>
+
+  <% @prev_checkouts.each_with_index do |c, i| %>
+    <%= render 'prev', :checkout => c, :index => i+1 %>
+  <% end %>
+</div>

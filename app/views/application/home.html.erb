@@ -1,0 +1,16 @@
+<h1> <%= @user.email %> 님 안녕하세요 </h1>
+<h2> 대여 혹은 반납을 원하시는 도서를 입력해주세요 </h2>
+
+<%= form_for(@book, :remote => true, :url => '/lend_return') do |f| %>
+	<div class="field">
+		<%= f.label :isbn %>
+		<%= f.text_field :isbn %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+
+

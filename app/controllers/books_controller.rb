@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
   include ApplicationHelper
   include BooksHelper
- 
+  
+  layout "application"
+
   def index
 	redirect_to pagination_path(:current_page => 1)
   end

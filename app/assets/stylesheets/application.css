@@ -26,6 +26,14 @@ body {
   margin-right:auto;
 }
 
+img.main-logo {
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 #nav {
 float: right;
 font-size: 14px;

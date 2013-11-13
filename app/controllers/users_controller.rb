@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  layout 'application'
   def show
   	@user = User.find(current_user.id)
 	@curr_checkouts = current_user.checkouts.find_all_by_returned(false)
@@ -18,4 +20,5 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
 end

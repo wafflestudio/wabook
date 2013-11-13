@@ -10,8 +10,4 @@ class ApplicationController < ActionController::Base
     @user = User.find(current_user.id); 
     @book = Book.new
   end
-
-  def lend_return
-    @book = Book.find_all_by_isbn(params[:isbn])
-  end
 end

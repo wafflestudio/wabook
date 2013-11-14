@@ -1,16 +1,16 @@
 Wabook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { :host =>
-	  'http://dev.wafflestudio.net:4000' }
+ config.action_mailer.default_url_options = { :host =>
+	  'http://dev.wafflestudio.net:3939' }
 
  config.action_mailer.perform_deliveries = true
  config.action_mailer.default :charset => "utf-8"
  config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
    :port                 => 587,
-   :user_name            => "wabook@wafflestudio.com",
-   :password             => 'wabook_p@ssword',
+   :user_name            => "wabook_admin@wafflestudio.com",
+   :password             => 'wabook4000',
    :authentication       => "plain",
    :enable_starttls_auto => true
  }

@@ -39,14 +39,14 @@ img.main-logo {
 float: right;
 font-size: 14px;
 }
-.top-nav a:link, .pages a:link, .new-book a:link {
+a:link{
   color:#646464;
   text-decoration:none;
 }
-.top-nav a:visited, .pages a:visited, .new-book a:visited {
+a:visited {
   text-decoration:none;
 }
-.top-nav a:hover, .pages a:hover, .new-book a:hover {
+a:hover{
   color:#FF1493;
 }
 

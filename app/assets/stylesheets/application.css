@@ -13,8 +13,8 @@
  */
 * {
   margin:0;
-  font-size:12px;
-  font-family:"Dotum";
+  font-size:20px;
+  font-family: 'Patrick Hand SC';
   vertical-align:middle;
 }
 
@@ -27,8 +27,9 @@ body {
 }
 
 img.main-logo {
-  width: 500px;
+  width: 400px;
   display: block;
+  margin-top: 100px; 
   margin-left: auto;
   margin-right: auto;
 }
@@ -37,6 +38,23 @@ img.main-logo {
 #nav {
 float: right;
 font-size: 14px;
+}
+
+#userMain {
+  margin-top: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+#footer {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 8px;
+  bottom: 10px;
+  text-align: center;
 }
 
 a.logo {

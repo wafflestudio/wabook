@@ -1,16 +1,19 @@
-<h1> <%= @user.email %> 님 안녕하세요 </h1>
-<h2> 대여 혹은 반납을 원하시는 도서를 입력해주세요 </h2>
+<div id = "userMain">
+  <h1> <%= @user.name %> 님 안녕하세요^o^ </h1>
+  <h2> 대여 혹은 반납을 원하시는 도서를 바코드리더기에 읽혀주세요 </h2>
+  </br>
+  <%= form_for(@book, :remote => true, :url => '/lend_return') do |f| %>
+    <div class="field">
+      <%= f.label :isbn %>
+      <%= f.text_field :isbn %>
+    </div>
+    </br>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 
-<%= form_for(@book, :remote => true, :url => '/lend_return') do |f| %>
-	<div class="field">
-		<%= f.label :isbn %>
-		<%= f.text_field :isbn %>
-	</div>
-
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-<% end %>
+</div>
 
 
 

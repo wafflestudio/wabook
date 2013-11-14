@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
 
   has_many :checkouts 
+
+  validates :email, format: { with: /[a-zA-Z0-9]+@wafflestudio.com\z/, message: "only allows @wafflestudio.com" }
 end

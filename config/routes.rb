@@ -2,12 +2,17 @@ Wabook::Application.routes.draw do
   devise_for :users
   root :to => "application#home"
 
-  post "/lend_return" => "books#lend_return"
+
 
   resources :books
   resources :users
 
   get '/pagination' => "books#pagination"
+  post "/lend_return" => "books#lend_return"
+  
+  get '/lend_user' => 'users#lend_user'
+  get '/late_user' => 'users#late_user'
+  get '/rank' => 'users#rank'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

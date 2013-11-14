@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th> 이름 </th>
+    <th> email </th>
+    <th> 연체 된 책</th>
+    <th> 반납일 </th>
+    <th> 연체일</th>
+  </tr>
+
+  <tr>
+    <% @users.each do |user| %>
+      <td> <%= user.name %> </td>
+      <td> <%= user.email %> </td>
+      <% @books[user].each do |book| %>
+        <th> <%= book.title %> </th>
+        <th> <%= book.checkouts.last.duedate %> </th>
+        <th> <%= Time.now+9.hours - book.checkouts.last.duedate %> </th>
+      <% end %>
+    <%end %>
+  </tr>
+</table>
+

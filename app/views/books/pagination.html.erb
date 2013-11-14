@@ -13,11 +13,13 @@
 <div id="booklist">
 
   <div id="booktop">
-    <p class="category booktop">분류</p>
-    <p class="title booktop">책제목</p>
-    <p class="author booktop">저자</p>
-    <p class="publisher booktop">출판사</p>
-    <p class="available booktop">대여여부</p>
+    <tr>
+      <th class="category booktop">분류</th>
+      <th class="title booktop">책제목</th>
+      <th class="author booktop">저자</th>
+      <th class="publisher booktop">출판사</th>
+      <th class="available booktop">대여여부</th>
+    </tr>
   </div>
 
   <% if @books.count > 0 %>
@@ -25,19 +27,17 @@
     <% @books.each do |book| %>
       <div class="book">
         <div class = "outside">
-          <p class="category bookClass"><%= book.category %></p>
-          <p class="title bookClass"><%= book.title %></p>
-          <p class="author bookClass"> <%= book.author %></p>
-          <p class="publisher bookClass"><%= book.publisher %></p>
-          <% if book.returned %>
-            <button book-id=<%= book.id %> class="available bookClass">
-              대여가능
-            </button>
-          <% else %>
-            <button book-id=<%= book.id %> class="reservation bookClass">
-              대여불가
-            </button>
-          <% end %>
+          <tr>
+            <td class="category "><%= book.category %></td>
+            <td class="title "><%= book.title %></td>
+            <td class="author "> <%= book.author %></td>
+            <td class="publisher"><%= book.publisher %></td>
+            <% if book.returned %>
+              <td> <button book-id=<%= book.id %> class="available"> 대여가능 </button> </td>
+            <% else %>
+              <td> <button book-id=<%= book.id %> class="reservation"> 대여불가 </button> </td>
+            <% end %>
+          </tr>
         </div>
         <div class = "content">
           <img class="pic" src=<%= book.data[:cover] %>>

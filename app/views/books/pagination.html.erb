@@ -1,6 +1,5 @@
-
-<div id="categorize">
-  <p class="categorize">see</p>
+<div class="categorize">
+  <p>see</p>
   <select>
     <option value="all">all</option>
     <option value="문학">문학</option>
@@ -10,67 +9,63 @@
   </select>
 </div>
 
-<div id="booklist">
-
-  <div id="booktop">
+<div class="book-list">
+  <table = "table">
     <tr>
-      <th class="category booktop">분류</th>
-      <th class="title booktop">책제목</th>
-      <th class="author booktop">저자</th>
-      <th class="publisher booktop">출판사</th>
-      <th class="available booktop">대여여부</th>
+      <th> 분류</th>
+      <th>책제목</th>
+      <th>저자</th>
+      <th>출판사</th>
+      <th>대여여부</th>
     </tr>
-  </div>
 
-  <% if @books.count > 0 %>
+    <% if @books.count > 0 %>
 
-    <% @books.each do |book| %>
-      <div class="book">
-        <div class = "outside">
-          <tr>
-            <td class="category "><%= book.category %></td>
-            <td class="title "><%= book.title %></td>
-            <td class="author "> <%= book.author %></td>
-            <td class="publisher"><%= book.publisher %></td>
-            <% if book.returned %>
-              <td> <button book-id=<%= book.id %> class="available"> 대여가능 </button> </td>
-            <% else %>
-              <td> <button book-id=<%= book.id %> class="reservation"> 대여불가 </button> </td>
-            <% end %>
-          </tr>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.category %></td>
+          <td><%= book.title %></td>
+          <td> <%= book.author %></td>
+          <td><%= book.publisher %></td>
+          <% if book.returned %>
+            <td> <button book-id=<%= book.id %>> 대여가능 </button> </td>
+          <% else %>
+            <td> <button book-id=<%= book.id %>> 대여불가 </button> </td>
+          <% end %>
+        </tr>
+        <div class = "book-content">
+          <img src=<%= book.data[:cover] %>>
+          <p id="title"><%= book.title %></p>
+          <p id="author"><%= book.author %></p>
+          <p id="category"><%= book.category %></p>
+          <p id="publisher"><%= book.publisher %></p>
+          <p id="description"><%= book.data[:description] %></p>
         </div>
-        <div class = "content">
-          <img class="pic" src=<%= book.data[:cover] %>>
-          <p class="title contentClass"><%= book.title %></p>
-          <p class="author contentClass"><%= book.author %></p>
-          <p class="category contentClass"><%= book.category %></p>
-          <p class="publisher contentClass"><%= book.publisher %></p>
-          <p class="description contentClass"><%= book.data[:description] %></p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </table>
+</div>
 
-
+<div class="pages">
   <%= link_to "이전", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
   <% @totalPageList.each do |page| %>
     <% if page == @current_page.to_i %>
-      <b id="currPageNum"><%= page %></b>
+      <b><%= page %></b>
     <% else %>
-      <a id="pageNum" href="/pagination?current_page=<%= page %>"><%= page %></a>
+      <a href="/pagination?current_page=<%= page %>"><%= page %></a>
     <% end %>
   <% end %>
   <%= link_to "다음", pagination_path(:current_page => (@current_page.to_i+1).to_s) %>
+</div>
 
+<div class="search">
+  <form action="/search">
+    <select name="search_type">
+      <option value="title">책 제목</option>
+      <option value="author">저자</option>
+    </select>
 
-  <div id="search">
-    <form action="/search">
-      <select name="search_type">
-        <option value="title">책 제목</option>
-        <option value="author">저자</option>
-      </select>
-
-      <input name="search_query" type="text" class="searchbox" />
-      <input type="submit" value="검색" />
-    </form>
-  </div>
+    <input name="search_query" type="text" class="searchbox" />
+    <input type="submit" value="검색" />
+  </form>
+</div>

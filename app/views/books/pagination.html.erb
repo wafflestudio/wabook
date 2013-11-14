@@ -10,7 +10,8 @@
 </div>
 
 <div class="book-list">
-  <table = "table">
+  <table class="table">
+    <thead>
     <tr>
       <th>category</th>
       <th>title</th>
@@ -18,7 +19,7 @@
       <th>publisher</th>
       <th>available</th>
     </tr>
-
+    </thead>
     <% if @books.count > 0 %>
       <% @books.each do |book| %>
         <tr>
@@ -32,7 +33,7 @@
             <td> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
           <% end %>
         </tr>
-        <div class = "book-content">
+        <div class = "book-content" hidden = "yes">
           <img src=<%= book.data[:cover] %>>
           <p id="title"><%= book.title %></p>
           <p id="author"><%= book.author %></p>

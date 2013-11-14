@@ -39,6 +39,16 @@ img.main-logo {
 float: right;
 font-size: 14px;
 }
+.top-nav a:link, .pages a:link, .new-book a:link {
+  color:#646464;
+  text-decoration:none;
+}
+.top-nav a:visited, .pages a:visited, .new-book a:visited {
+  text-decoration:none;
+}
+.top-nav a:hover, .pages a:hover, .new-book a:hover {
+  color:#FF1493;
+}
 
 .main-page{
   margin-top: 20px;
@@ -52,7 +62,36 @@ font-size: 14px;
   font-size: 7px;
   bottom: 7px;
 }
-
 .table {
-  
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 700px;
+}
+.table th{
+  background-color:#FA3273;
+} 
+.table td, .table th{
+  text-align: center;
+}
+.table tbody td {
+  font-size:13px;
+}
+
+.user-list .table tbody td {
+ font-size:17px;
+}
+.pages{
+  text-align: center;
+}
+
+.search{
+  font-size:13px; 
+  text-align: center;
+  margin-top: 20px;
+}
+.search .searchbox, #book_isbn {
+  height: 25px;
+}
+.new-book{
+  text-align: center;
 }

@@ -1,12 +1,14 @@
-<table>
-  <tr>
-    <th> 이름</th>
-    <th> email </th>
-  </tr>
-  <tr>
-    <% @users.each do |user| %>
-      <td> <%= user.name %> </td>
-      <td> <%= user.email %> </td>
-    <% end%>
-  </tr>
-</table>
+<div class="user-list">
+  <table class="table">
+    <tr>
+      <th> 이름</th>
+      <th> email </th>
+    </tr>
+    <tr>
+      <% @users.each do |user| %>
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+      <% end%>
+    </tr>
+  </table>
+</div>

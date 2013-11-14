@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree .
  */
-
 * {
   margin:0;
   font-size:20px;
@@ -22,46 +21,37 @@
 body {
   margin-top:20px;
   background-color:#f9f9f7;
-  width:700px;
   margin-left:auto;
   margin-right:auto;
+  width:700px;
 }
 
 img.main-logo {
   width: 400px;
   display: block;
   margin-top: 100px; 
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-
-#nav {
+.top-nav {
 float: right;
 font-size: 14px;
 }
 
-#userMain {
+.main-page{
   margin-top: 20px;
-  margin-left:auto;
-  margin-right:auto;
   font-size: 20px;
   text-align: center;
 }
 
 #footer {
-  position: absolute;
-  margin-left: auto;
   margin-right: auto;
   font-size: 8px;
   bottom: 10px;
   text-align: center;
 }
 
-a.logo {
-float: left;
-}
-
-a.link {
-margin-right: 15px;
+.table {
+  
 }

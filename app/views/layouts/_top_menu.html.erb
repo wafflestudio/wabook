@@ -1,4 +1,4 @@
-<div id="nav">
+<div class="top-nav">
   <% if signed_in? %>
     <% if current_user.is_admin %>
       <%= link_to "Add new book", new_book_path, :class =>"link" %>

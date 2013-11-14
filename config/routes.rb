@@ -1,6 +1,8 @@
 Wabook::Application.routes.draw do
   devise_for :users
-  root :to => "books#index"
+  root :to => "application#home"
+
+  post "/lend_return" => "books#lend_return"
 
   resources :books
   resources :users

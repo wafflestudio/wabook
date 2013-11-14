@@ -2,7 +2,7 @@ Wabook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
  config.action_mailer.default_url_options = { :host =>
-	  'http://dev.wafflestudio.net:3939' }
+	  'http://test.com' }
 
  config.action_mailer.perform_deliveries = true
  config.action_mailer.default :charset => "utf-8"

@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
   include ApplicationHelper
   include BooksHelper
- 
+  
+  layout "application"
+
   def index
 	redirect_to pagination_path(:current_page => 1)
   end
@@ -14,8 +16,8 @@ class BooksController < ApplicationController
 
   def create
   	@book = Book.new(book_params)
-	@incorrectISBN = !isCorrectISBN?(book_params[:isbn])
-	@isRegistered = isRegistered?(book_params[:isbn])
+  	@incorrectISBN = !isCorrectISBN?(book_params[:isbn])
+  	@isRegistered = isRegistered?(book_params[:isbn])
 
 	if @incorrectISBN
 		render :action => "new", :incorrectISBN => true
@@ -43,6 +45,23 @@ class BooksController < ApplicationController
   def destory
   end
 
+  def lend_return
+    @books = Book.find_all_by_isbn(book_params[:isbn])
+    if @books.count == 0
+      @isNotExist = true
+      @isReturned = false
+    else
+      @book = @books[0]
+      @bookId = @book.id
+      @checkouts = Checkout.find_all_by_book_id(@book.id)
+      if @checkouts.count > 0
+        @checkoutId = @checkouts.last.id
+      end
+      @isNotExist = false
+      @isReturned = @book.returned
+      @title = @book.title
+    end
+  end
 
   def pagination
     require 'nokogiri' 

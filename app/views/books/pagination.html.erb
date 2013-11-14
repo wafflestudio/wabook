@@ -14,11 +14,11 @@
 
   <div id="booktop">
     <tr>
-      <th class="category booktop">분류</th>
-      <th class="title booktop">책제목</th>
-      <th class="author booktop">저자</th>
-      <th class="publisher booktop">출판사</th>
-      <th class="available booktop">대여여부</th>
+      <th class="category booktop">category</th>
+      <th class="title booktop">title</th>
+      <th class="author booktop">author</th>
+      <th class="publisher booktop">publisher</th>
+      <th class="available booktop">available</th>
     </tr>
   </div>
 
@@ -33,9 +33,9 @@
             <td class="author "> <%= book.author %></td>
             <td class="publisher"><%= book.publisher %></td>
             <% if book.returned %>
-              <td> <button book-id=<%= book.id %> class="available"> 대여가능 </button> </td>
+              <td> <button book-id=<%= book.id %> class="available"> available </button> </td>
             <% else %>
-              <td> <button book-id=<%= book.id %> class="reservation"> 대여불가 </button> </td>
+              <td> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
             <% end %>
           </tr>
         </div>
@@ -52,7 +52,7 @@
   <% end %>
 
 
-  <%= link_to "이전", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
+  <%= link_to "previous", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
   <% @totalPageList.each do |page| %>
     <% if page == @current_page.to_i %>
       <b id="currPageNum"><%= page %></b>
@@ -60,17 +60,17 @@
       <a id="pageNum" href="/pagination?current_page=<%= page %>"><%= page %></a>
     <% end %>
   <% end %>
-  <%= link_to "다음", pagination_path(:current_page => (@current_page.to_i+1).to_s) %>
+  <%= link_to "next", pagination_path(:current_page => (@current_page.to_i+1).to_s) %>
 
 
   <div id="search">
     <form action="/search">
       <select name="search_type">
-        <option value="title">책 제목</option>
-        <option value="author">저자</option>
+        <option value="title">title</option>
+        <option value="author">author</option>
       </select>
 
       <input name="search_query" type="text" class="searchbox" />
-      <input type="submit" value="검색" />
+      <input type="submit" value="search"class="seachButton" />
     </form>
   </div>

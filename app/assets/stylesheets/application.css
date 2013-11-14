@@ -13,13 +13,14 @@
  */
 * {
   margin:0;
-  font-size:20px;
+  font-size:19px;
   font-family: 'Patrick Hand SC';
   vertical-align:middle;
+  line-height: 21px;
 }
 
 body {
-  margin-top:20px;
+  margin-top:0px;
   background-color:#f9f9f7;
   width:700px;
   margin-left:auto;
@@ -29,7 +30,7 @@ body {
 img.main-logo {
   width: 400px;
   display: block;
-  margin-top: 100px; 
+  margin-top: 30px; 
   margin-left: auto;
   margin-right: auto;
 }
@@ -48,13 +49,11 @@ font-size: 14px;
   text-align: center;
 }
 
-#footer {
+.footer {
+  float: left;
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 8px;
-  bottom: 10px;
-  text-align: center;
+  font-size: 7px;
+  bottom: 7px;
 }
 
 a.logo {

@@ -1,14 +1,14 @@
 <div id="mybooklist">
-<p class="mybooklist">나의 대출 현황</th>
+<p class="mybooklist"> My lend history </th>
 <div id="booktop">
   <tr>
-    <th class="order booktop">순번</th>
-    <th class="title booktop">책제목</th>
-    <th class="author booktop">저자</th>
-    <th class="lendDate booktop">대출일</th>
-    <th class="dueDate booktop">반납예정일</th>
-    <th class="prolong booktop">연장</th>
-    <th class="return booktop">반납</th>
+    <th class="order booktop">order</th>
+    <th class="title booktop">title</th>
+    <th class="author booktop">author</th>
+    <th class="lendDate booktop">lendDate</th>
+    <th class="dueDate booktop">returnDueDate</th>
+    <th class="prolong booktop">prolong</th>
+    <th class="return booktop">return</th>
   </tr>
 </div>
 
@@ -19,14 +19,14 @@
 </div>
 <br>
 
-<p class="prevlist">이전 대출 내역</th>
+<p class="prevlist">Previous lending history</th>
 <tr id="prevlist">
   <div id="booktop">
-    <th class="order booktop">순번</th>
-    <th class="title booktop">책제목</th>
-    <th class="author booktop">저자</th>
-    <th class="lendDate booktop">대출일</th>
-    <th class="returnDate booktop">반납일</th>
+    <th class="order booktop">order</th>
+    <th class="title booktop">title</th>
+    <th class="author booktop">author</th>
+    <th class="lendDate booktop">lendDate</th>
+    <th class="returnDate booktop">returnDate</th>
   </div>
   <% @prev_checkouts.each_with_index do |c, i| %>
     <%= render 'prev', :checkout => c, :index => i+1 %>

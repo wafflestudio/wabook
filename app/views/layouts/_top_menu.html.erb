@@ -2,10 +2,13 @@
   <% if signed_in? %>
     <% if current_user.is_admin %>
       <%= link_to "책 신규등록", new_book_path, :class =>"link" %>
+      <%= link_to "User list", users_path, :class=>"link"%>
+      <%= link_to "대출 중인 사용자", :controller => 'users', :action => 'lend_user', :class => "link" %>
+      <%= link_to "연체 중인 사용자", :controller => 'users', :action => 'late_user', :class => "link" %>
     <% end %>
     <%= link_to "대여/반납", root_path, :class => "link"%>
     <%= link_to "Book list", books_path, :class => "link" %>
-    <%= link_to "명예의 전당", users_path, :class =>"link" %>
+    <%= link_to "명예의 전당", :controller => 'users', :action => 'rank', :class =>"link" %>
     <%= link_to "My Page", user_path(current_user), :class =>"link" %>
     <%= link_to "logout", destroy_user_session_path, :method => :delete, :class =>"link" %>  
   <% else %>

@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
 
   has_many :checkouts 
 
-  validates :email, format: { with: /\A[a-zA-Z]+@wafflestudio.com\z/, message: "only allows @wafflestudio.com" }
+  validates :email, format: { with: /[a-zA-Z0-9]+@wafflestudio.com\z/, message: "only allows @wafflestudio.com" }
 end

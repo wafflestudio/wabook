@@ -9,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.all
+    if !current_user.is_admin 
+      redirect_to :controller => 'books', :action => 'lend_return'
+    else
+  	  @users = User.all
+    end
   end
 
   def edit
@@ -21,4 +25,25 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def rank
+  end
+
+  def lend_user
+    @checkouts = Checkout.find_all_by_returned(false)
+    @books = {}
+    @users = @checkouts.map{ |c| c.user }
+    @users.each do |u|
+      @books[u] = u.checkouts.map { |c| c.book }
+    end
+  end
+
+  def late_user
+    @checkouts = Checkout.find_all_by_returned(false)
+    @checkouts = @checkouts.select{|c| c.duedate < Time.now+9.hours }
+    @books = {}
+    @users = @checkouts.map{ |c| c.user }
+    @users.each do |u|
+      @books[u] = u.checkouts.map { |c| c.book }
+    end
+  end
 end

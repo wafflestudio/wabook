@@ -1,34 +1,34 @@
-<div id="mybooklist">
-<p class="mybooklist"> My lend history </th>
-<div id="booktop">
+<div class="user-show">
+<p> My lend history </th>
+  <table class="table">
   <tr>
-    <th class="order booktop">order</th>
-    <th class="title booktop">title</th>
-    <th class="author booktop">author</th>
-    <th class="lendDate booktop">lendDate</th>
-    <th class="dueDate booktop">returnDueDate</th>
-    <th class="prolong booktop">prolong</th>
-    <th class="return booktop">return</th>
+    <th>order</th>
+    <th>title</th>
+    <th>author</th>
+    <th>lendDate</th>
+    <th>returnDueDate</th>
+    <th>prolong</th>
+    <th>return</th>
   </tr>
+
+    <% @curr_checkouts.each do |c| %>
+      <%= render 'current', :checkout => c %>
+    <% end %>
+
+  </table>
+  <br>
+
+  <p>Previous lending history</p>
+  <table class="table">
+    <tr id="prevlist">
+      <th>order</th>
+      <th>title</th>
+      <th>author</th>
+      <th>lendDate</th>
+      <th>returnDate</th>
+      <% @prev_checkouts.each_with_index do |c, i| %>
+        <%= render 'prev', :checkout => c, :index => i+1 %>
+      <% end %>
+    </tr>
+  </table>
 </div>
-
-<% @curr_checkouts.each do |c| %>
-  <%= render 'current', :checkout => c %>
-<% end %>
-
-</div>
-<br>
-
-<p class="prevlist">Previous lending history</th>
-<tr id="prevlist">
-  <div id="booktop">
-    <th class="order booktop">order</th>
-    <th class="title booktop">title</th>
-    <th class="author booktop">author</th>
-    <th class="lendDate booktop">lendDate</th>
-    <th class="returnDate booktop">returnDate</th>
-  </div>
-  <% @prev_checkouts.each_with_index do |c, i| %>
-    <%= render 'prev', :checkout => c, :index => i+1 %>
-  <% end %>
-</tr>

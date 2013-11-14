@@ -12,6 +12,9 @@ class BooksController < ApplicationController
   	@book = Book.new
 	@isRegistered = params[:isRegistered]
 	@incorrectISBN = params[:incorrectISBN]
+  respond_to do |format|
+    format.html { render :layout => 'main' }
+  end
   end
 
   def create

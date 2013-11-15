@@ -120,9 +120,28 @@ class BooksController < ApplicationController
                    description: doc.xpath("//item/description").text }
     end
   end
+  
+def search
+  logger.info params
 
-  private
-  def book_params
-    params.require(:book).permit(:isbn)
-  end
+  search_type = params["search_type"]
+  search_query = params["search_query"]
+
+  if (search_type == "title") # 책 이름일 경우 
+    @books = Book.where("title like '%#{search_query}%'")
+  else # 작가일 경우 
+    @books = Book.where("author like '%#{search_query}%'")
+  end 
+
+  @books.each do |book|
+    doc = Nokogiri::XML(open('http://book.interpark.com/api/search.api?key=BB76C57E2E5D09210AD11705A6102C4A9F469F0EA24C2BAF365CCF8A0DF81BCB&query=' + book.isbn + '&queryType=isbn'))  
+    book.data = {cover: doc.xpath("//item[1]/coverLargeUrl").text, 
+                 description: doc.xpath("//item/description").text }
+  end 
 end 
+
+private
+def book_params
+  params.require(:book).permit(:isbn)
+end
+end

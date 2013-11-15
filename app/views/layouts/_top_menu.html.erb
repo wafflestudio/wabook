@@ -3,8 +3,6 @@
     <% if current_user.is_admin %>
       <%= link_to "Add new book", new_book_path, :class =>"link" %>
       <%= link_to "User list", users_path, :class=>"link"%>
-      <%= link_to "Lending Users", :controller => 'users', :action => 'lend_user', :class => "link" %>
-      <%= link_to "Overdue Users", :controller => 'users', :action => 'late_user', :class => "link" %>
     <% end %>
     <%= link_to "Lend/Return", root_path, :class => "link"%>
     <%= link_to "Book list", books_path, :class => "link" %>

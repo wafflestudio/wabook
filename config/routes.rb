@@ -2,8 +2,6 @@ Wabook::Application.routes.draw do
   devise_for :users
   root :to => "application#home"
 
-
-
   resources :books
   resources :users
 
@@ -14,6 +12,8 @@ Wabook::Application.routes.draw do
   get '/late_user' => 'users#late_user'
   get '/rank' => 'users#rank'
   get '/search' => "books#pagination"
+  get '/prolong/:id' => 'users#prolong'
+  get '/delete_book/:id' => 'books#delete_book'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

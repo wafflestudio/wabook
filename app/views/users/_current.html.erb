@@ -5,6 +5,7 @@
   <td class="author bookClass"><%= book.author %></td>
   <td class="lendDate bookClass"><%= checkout.checkoutdate.to_date %></td>
   <td class="dueDate bookClass"><%= checkout.duedate.to_date %></td>
-  <td> <button data-check_id=<%= checkout.id %> class="prolong bookClass">연장</button> </td>
-  <td> <button data-book_id=<%= book.id %> data-check_id=<%= checkout.id %> class="return bookClass">반납</button> </td>
+  <td> <button checkout_id=<%= checkout.id %> class="prolong">연장</button> </td>
+  <td><%= link_to "<button>반납</button>".html_safe, root_path, :book_id => book.id, :checkout_id => checkout.id, :class => "return" %></td>
+  
 </tr>

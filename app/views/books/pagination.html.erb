@@ -7,6 +7,9 @@
         <th class = "th3">author</th>
         <th class = "th4">publisher</th>
         <th class = "th5">available</th>
+        <% if current_user.is_admin %>
+          <th class = "th6">Delete</th>
+        <% end %>
       </tr>
     </thead>
   </table>
@@ -14,7 +17,7 @@
       <% @books.each do |book| %>
         <table class="table">
 
-        <tr>
+          <tr data-book_id = "<%= book.id %>">
           <td class = "td1"><%= book.category %></td>
           <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
           <td class = "td3"> <%= book.author %></td>
@@ -23,6 +26,9 @@
             <td class = "td5"> <button book-id=<%= book.id %> class="available"> available </button> </td>
           <% else %>
             <td class = "td5"> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
+          <% end %>
+          <% if current_user.is_admin %>
+            <td class = "td6"><button class="delete" >delete</button> </td>
           <% end %>
         </tr>
         </table>

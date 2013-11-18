@@ -1,6 +1,6 @@
 <div class="user-show">
-<p> My lend history </th>
-  <table class="table">
+  <p> My lend history </th>
+<table class="table">
   <tr>
     <th>order</th>
     <th>title</th>
@@ -11,24 +11,24 @@
     <th>return</th>
   </tr>
 
-    <% @curr_checkouts.each do |c| %>
-      <%= render 'current', :checkout => c %>
+  <% @curr_checkouts.each do |c| %>
+    <%= render 'current', :checkout => c %>
+  <% end %>
+
+</table>
+<br>
+
+<p>Previous lending history</p>
+<table class="table">
+  <tr id="prevlist">
+    <th>order</th>
+    <th>title</th>
+    <th>author</th>
+    <th>lendDate</th>
+    <th>returnDate</th>
+    <% @prev_checkouts.each_with_index do |c, i| %>
+      <%= render 'prev', :checkout => c, :index => i+1 %>
     <% end %>
-
-  </table>
-  <br>
-
-  <p>Previous lending history</p>
-  <table class="table">
-    <tr id="prevlist">
-      <th>order</th>
-      <th>title</th>
-      <th>author</th>
-      <th>lendDate</th>
-      <th>returnDate</th>
-      <% @prev_checkouts.each_with_index do |c, i| %>
-        <%= render 'prev', :checkout => c, :index => i+1 %>
-      <% end %>
-    </tr>
-  </table>
+  </tr>
+</table>
 </div>

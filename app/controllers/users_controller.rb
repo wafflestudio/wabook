@@ -46,4 +46,18 @@ class UsersController < ApplicationController
       @books[u] = u.checkouts.select{|c| c.returned == false}.map { |c| c.book }
     end
   end
+  def prolong
+    @checkout = Checkout.find(params[:id])
+
+    if @checkout.prolongcount >= 2
+      render :json => {status: "error"}
+    else
+      @checkout.duedate = @checkout.duedate+7.day
+      @checkout.prolongcount = @checkout.prolongcount+1
+      @checkout.save
+      render :json => {status: "OK"}
+      #render :json => @checkout.to_json
+    end
+  end
+
 end

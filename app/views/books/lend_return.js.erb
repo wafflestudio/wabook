@@ -1,38 +1,42 @@
-<% if @isNotExist %>
+<% if @bookNotExist %>
     alert("등록되지 않은 도서입니다. 관리자에게 문의해주시기 바랍니다");
-<% elsif @isReturned %>
-  var r = confirm("<%= @title %>을(를) 빌리시겠습니까?")
+<% elsif @lendBook %>
+  var r = confirm(" <%= @book.title %>을(를) 빌리시겠습니까?")
   if (r){
-    <% @book = Book.find(@bookId) %>
-    <% @book.returned = false %>
-    <% @book.save %>
+    <% if @isPossible %>
+      <% @book.returned = false %>
+      <% @book.save %>
 
-    <% @checkout = Checkout.new %>
-    <% @checkout.book_id = @bookId %>
-    <% @checkout.user_id = current_user.id %>
-    <% @checkout.checkoutdate = Time.now + 9.hours %>
-    <% @checkout.duedate = Time.new + 9.hours + 14.day %>
-    <% @checkout.returned = false %>
-    <% @checkout.save %>
-    alert("대출에 성공하셨습니다")
+      <% @checkout = Checkout.new %>
+      <% @checkout.book_id = @book.id %>
+      <% @checkout.user_id = current_user.id %>
+      <% @checkout.checkoutdate = Time.now + 9.hours %>
+      <% @checkout.duedate = Time.new + 9.hours + 14.day %>
+      <% @checkout.returned = false %>
+      <% @checkout.save %>
+      alert("대출에 성공하셨습니다")
+    <% else %>
+        alert("남는 책이 없네요ㅠㅠ")
+    <% end %> 
   }else{
-
+    alert("대출을 취소하셨습니다")
+  }
+<% elsif @returnBook %>
+  var r = confirm("<%= @book.title %>을(를) 반납하시겠습니까?")
+  if(r){
+    <% @checkout.returned = true %>
+    <% @checkout.save %> 
+    <% @book.returned = true %>
+    <% @book.save %>
+    <% if @returnOthersBook %>
+        alert("<%= @other_user.name %>님의 <%= @book.title %>을(를) 대신 반납하셨습니다")
+    <% else %>
+        alert("<%= @book.title %>을(를) 반납하셨습니다")
+    <% end %> 
+  }else{
+    alert("반납을 취소하셨습니다")
   }
 <% else %>
-  var r = confirm("<%= @title %>을(를) 반납하시겠습니까?")
-  if(r){
-    <%= Rails.logger.info @checkoutId %>
-    <% if @checkoutId != nil %>
-        <% @checkout = Checkout.find(@checkoutId) %>
-      <% @checkout.returned = true %>
-      <% @checkout.save %>
-
-      <% @book = Book.find(@bookId) %>
-      <% @book.returned = true %>
-      <% @book.save %>
-    <% end %>
-    alert("반납에 성공하셨습니다")
-  }else{
-    alert("반납에 실패하셨습니다")
-  }
+    alert("오류")
 <% end %>
+

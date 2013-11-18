@@ -1,8 +1,8 @@
 <% if @bookNotExist %>
     alert("등록되지 않은 도서입니다. 관리자에게 문의해주시기 바랍니다");
 <% elsif @lendBook %>
-  var r = confirm(" <%= @book.title %>을(를) 빌리시겠습니까?")
-  if (r){
+//  var r = confirm(" <%= @book.title %>을(를) 빌리시겠습니까?")
+//  if (r){
     <% if @isPossible %>
       <% @book.returned = false %>
       <% @book.save %>
@@ -14,16 +14,16 @@
       <% @checkout.duedate = Time.new + 9.hours + 14.day %>
       <% @checkout.returned = false %>
       <% @checkout.save %>
-      alert("대출에 성공하셨습니다")
+      alert("<%= @book.title %>을 대출하셨습니다")
     <% else %>
         alert("남는 책이 없네요ㅠㅠ")
     <% end %> 
-  }else{
-    alert("대출을 취소하셨습니다")
-  }
+//  }else{
+//    alert("대출을 취소하셨습니다")
+//  }
 <% elsif @returnBook %>
-  var r = confirm("<%= @book.title %>을(를) 반납하시겠습니까?")
-  if(r){
+ // var r = confirm("<%= @book.title %>을(를) 반납하시겠습니까?")
+  //if(r){
     <% @checkout.returned = true %>
     <% @checkout.save %> 
     <% @book.returned = true %>
@@ -33,9 +33,9 @@
     <% else %>
         alert("<%= @book.title %>을(를) 반납하셨습니다")
     <% end %> 
-  }else{
-    alert("반납을 취소하셨습니다")
-  }
+//  }else{
+//    alert("반납을 취소하셨습니다")
+//  }
 <% else %>
     alert("오류")
 <% end %>

@@ -1,7 +1,8 @@
 
 $(document).ready(function(){
-  $("td#booktitle").click(function(){
-    $(this).parent().parent().children(".book-content").slideToggle("slow");
+  $("td.book-title").click(function(){
+    $("div[id=" + $(this)[0].id + "]").slideToggle("slow");
+    console.log($(this)[0].id)
 
   }); 
   $(".available.bookClass").click(function(){
@@ -22,7 +23,7 @@ $(document).ready(function(){
     }   
 
 
-  }); 
+  });
   $(".reservation.bookClass").click(function(){
     var r = confirm("이 책을 예약하시겠습니까?")
     if (r){

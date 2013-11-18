@@ -64,6 +64,21 @@ a:hover {
   border-spacing: 0;
   width: 700px;
 }
+.table .td1, .table .th1{
+  width: 12%;
+}
+.table .td2, .table .th2{
+  width: 35%;
+}
+.table .td3, .table .th3{
+  width: 20%;
+}
+.table .td4, .table .th4{
+  width: 17%;
+}
+.table .td5, .table .th5{
+  width: 16%;
+}
 .table th{
   background-color:#FA3273;
 } 

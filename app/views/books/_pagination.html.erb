@@ -1,36 +1,39 @@
-
 <div class="book-list">
   <table class="table">
     <thead>
-    <tr>
-      <th>category</th>
-      <th>title</th>
-      <th>author</th>
-      <th>publisher</th>
-      <th>available</th>
-    </tr>
+      <tr>
+        <th class = "th1">category</th>
+        <th class = "th2">title</th>
+        <th class = "th3">author</th>
+        <th class = "th4">publisher</th>
+        <th class = "th5">available</th>
+      </tr>
     </thead>
+  </table>
     <% if @books.count > 0 %>
       <% @books.each do |book| %>
+        <table class="table">
+
         <tr>
-          <td><%= book.category %></td>
-          <td id= "book-title"><%= book.title %></td>
-          <td> <%= book.author %></td>
-          <td><%= book.publisher %></td>
+          <td class = "td1"><%= book.category %></td>
+          <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
+          <td class = "td3"> <%= book.author %></td>
+          <td class = "td4"><%= book.publisher %></td>
           <% if book.returned %>
-            <td> <button book-id=<%= book.id %> class="available"> available </button> </td>
+            <td class = "td5"> <button book-id=<%= book.id %> class="available"> available </button> </td>
           <% else %>
-            <td> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
+            <td class = "td5"> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
           <% end %>
         </tr>
-        <div class = "book-content", hidden = 'yes'>
-          <img src=<%= book.data[:cover] %>>
-          <p id="title"><%= book.title %></p>
-          <p id="author"><%= book.author %></p>
-          <p id="category"><%= book.category %></p>
-          <p id="publisher"><%= book.publisher %></p>
-          <p id="description"><%= book.data[:description] %></p>
-        </div>
+        </table>
+            <div class = "book-content" id= "<%= book.id %>", hidden='yes' >
+              <img src=<%= book.data[:cover] %>>
+              <p id="title"><%= book.title %></p>
+              <p id="author"><%= book.author %></p>
+              <p id="category"><%= book.category %></p>
+              <p id="publisher"><%= book.publisher %></p>
+              <p id="description"><%= book.data[:description] %></p>
+            </div>
       <% end %>
     <% end %>
   </table>

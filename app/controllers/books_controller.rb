@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @isRegistered = params[:isRegistered]
+#    @isRegistered = params[:isRegistered]
     @incorrectISBN = params[:incorrectISBN]
     respond_to do |format|
       format.html { render :layout => 'main' }
@@ -24,12 +24,12 @@ class BooksController < ApplicationController
 
     if @incorrectISBN
       render :action => "new", :incorrectISBN => true
-    elsif @isRegistered
-      render :action => "new", :isRegistered=> true
+#    elsif @isRegistered
+#      render :action => "new", :isRegistered=> true
     else
       @book = Book.new(getBookFromISBN(book_params[:isbn]))
       @book.save
-      redirect_to books_path
+      redirect_to new_book_path
     end
   end
 

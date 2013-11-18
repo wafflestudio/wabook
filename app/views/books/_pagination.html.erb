@@ -20,9 +20,9 @@
           <td class = "td3"> <%= book.author %></td>
           <td class = "td4"><%= book.publisher %></td>
           <% if book.returned %>
-            <td class = "td5"> <button book-id=<%= book.id %> class="available"> available </button> </td>
+            <td class = "td5"><%= link_to "<button>available</button>".html_safe, root_path %> </td>
           <% else %>
-            <td class = "td5"> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
+            <td class = "td5"><%= link_to "<button>unavailable</button>".html_safe, root_path %> </td>
           <% end %>
         </tr>
         </table>

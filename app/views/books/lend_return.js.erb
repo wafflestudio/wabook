@@ -13,6 +13,7 @@
       <% @checkout.checkoutdate = Time.now + 9.hours %>
       <% @checkout.duedate = Time.new + 9.hours + 14.day %>
       <% @checkout.returned = false %>
+      <% @checkout.prolongcount = 0 %>
       <% @checkout.save %>
       alert("<%= @book.title %>을 대출하셨습니다")
     <% else %>

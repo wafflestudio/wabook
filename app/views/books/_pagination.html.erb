@@ -1,0 +1,48 @@
+
+<div class="book-list">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>category</th>
+      <th>title</th>
+      <th>author</th>
+      <th>publisher</th>
+      <th>available</th>
+    </tr>
+    </thead>
+    <% if @books.count > 0 %>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.category %></td>
+          <td id= "book-title"><%= book.title %></td>
+          <td> <%= book.author %></td>
+          <td><%= book.publisher %></td>
+          <% if book.returned %>
+            <td> <button book-id=<%= book.id %> class="available"> available </button> </td>
+          <% else %>
+            <td> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
+          <% end %>
+        </tr>
+        <div class = "book-content", hidden = 'yes'>
+          <img src=<%= book.data[:cover] %>>
+          <p id="title"><%= book.title %></p>
+          <p id="author"><%= book.author %></p>
+          <p id="category"><%= book.category %></p>
+          <p id="publisher"><%= book.publisher %></p>
+          <p id="description"><%= book.data[:description] %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="search">
+  <form action="/search">
+    <select name="search_type" id="search"> 
+      <option value="title">title</option>
+      <option value="author">author</option>
+    </select>
+    <input name="search_query" type="text" id="search" />
+    <input type="submit" value="search"class="seachButton" />
+  </form>
+</div>

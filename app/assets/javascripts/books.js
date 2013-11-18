@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
   $("td#booktitle").click(function(){
     $(this).parent().parent().children(".book-content").slideToggle("slow");

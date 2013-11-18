@@ -39,17 +39,9 @@ img.main-logo {
 float: right;
 font-size: 14px;
 }
-a:link {
+a {
   text-decoration:none;
-}
-.link {
   color: #72002E;
-}
-a:active {
-  color:#FF1493;
-}
-a:visited {
-  text-decoration:none;
 }
 a:hover {
   color:#FF1493;
@@ -88,7 +80,9 @@ a:hover {
 .pages{
   text-align: center;
 }
-
+.pageNum {
+  color:#FA3273;
+}
 .search{
   text-align: center;
   margin-top: 30px;

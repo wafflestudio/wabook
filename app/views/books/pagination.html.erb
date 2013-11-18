@@ -4,7 +4,7 @@
   <%= link_to "previous", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
   <% @totalPageList.each do |page| %>
     <% if page == @current_page.to_i %>
-      <b><%= page %></b>
+      <b class= "pageNum"><%= page %></b>
     <% else %>
       <a href="/pagination?current_page=<%= page %>"><%= page %></a>
     <% end %>

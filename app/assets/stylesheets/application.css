@@ -110,3 +110,16 @@ a:hover {
 .new-book{
   text-align: center;
 }
+
+.book-content {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.book-content p{
+  font-size: 13px;
+}
+
+.description {
+  margin-top: 15px;
+}

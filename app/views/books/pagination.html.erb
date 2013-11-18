@@ -1,7 +1,53 @@
-<%= render 'pagination'%>
+<div class="book-list">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class = "th1">category</th>
+        <th class = "th2">title</th>
+        <th class = "th3">author</th>
+        <th class = "th4">publisher</th>
+        <th class = "th5">available</th>
+      </tr>
+    </thead>
+  </table>
+    <% if @books.count > 0 %>
+      <% @books.each do |book| %>
+        <table class="table">
+
+        <tr>
+          <td class = "td1"><%= book.category %></td>
+          <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
+          <td class = "td3"> <%= book.author %></td>
+          <td class = "td4"><%= book.publisher %></td>
+          <% if book.returned %>
+            <td class = "td5"> <button book-id=<%= book.id %> class="available"> available </button> </td>
+          <% else %>
+            <td class = "td5"> <button book-id=<%= book.id %> class="unavailable"> unavailable </button> </td>
+          <% end %>
+        </tr>
+        </table>
+            <div class = "book-content" id= "<%= book.id %>", hidden='yes' >
+              <img src=<%= book.data[:cover] %>>
+              <p class="description"><%= book.data[:description] %></p>
+            </div>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="search">
+  <form action="/search">
+    <select name="search_type" id="search"> 
+      <option value="title">title</option>
+      <option value="author">author</option>
+    </select>
+    <input name="search_query" type="text" id="search" />
+    <input type="submit" value="search"class="seachButton" />
+  </form>
+</div>
 
 <div class="pages">
-  <%= link_to "previous", pagination_path(:current_page => (@current_page.to_i-1).to_s) %>
+  <%= link_to "previous", pagination_path(:current_page => (@current_page.to_i-1).to_s, :search_type => @search_type, :search_query => @search_query) %>
   <% @totalPageList.each do |page| %>
     <% if page == @current_page.to_i %>
       <b class= "pageNum"><%= page %></b>
@@ -9,6 +55,6 @@
       <a href="/pagination?current_page=<%= page %>"><%= page %></a>
     <% end %>
   <% end %>
-  <%= link_to "next", pagination_path(:current_page => (@current_page.to_i+1).to_s) %>
+  <%= link_to "next", pagination_path(:current_page => (@current_page.to_i+1).to_s, :search_type => @search_type, :search_query => @search_query) %>
 </div>
 

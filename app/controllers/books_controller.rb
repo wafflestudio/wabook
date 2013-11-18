@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-#    @isRegistered = params[:isRegistered]
+    #    @isRegistered = params[:isRegistered]
     @incorrectISBN = params[:incorrectISBN]
     respond_to do |format|
       format.html { render :layout => 'main' }
@@ -24,8 +24,8 @@ class BooksController < ApplicationController
 
     if @incorrectISBN
       render :action => "new", :incorrectISBN => true
-#    elsif @isRegistered
-#      render :action => "new", :isRegistered=> true
+      #    elsif @isRegistered
+      #      render :action => "new", :isRegistered=> true
     else
       @book = Book.new(getBookFromISBN(book_params[:isbn]))
       @book.save
@@ -105,41 +105,38 @@ class BooksController < ApplicationController
     require 'nokogiri' 
     require 'open-uri' 
     rowsPerPage = 10;
+
+    @search_type = params[:search_type]
+    @search_query = params[:search_query]
+
+    if (@search_type == "title") # 책 이름일 경우 
+      @books = Book.where("title like '%#{@search_query}%'")
+    elsif (@search_type == "author") # 작가일 경우 
+      @books = Book.where("author like '%#{@search_query}%'")
+    else 
+      @books = Book.all
+    end
+
     @current_page = params[:current_page]
+    @totalCnt = @books.count
+    @totalPageList = getTotalPageList(@totalCnt, rowsPerPage)
 
     if @current_page.to_i < 1
       @current_page = 1.to_s
     end
 
-    @books = Book.page(@current_page).per(rowsPerPage)
-    @totalCnt = Book.all.count
-    @totalPageList = getTotalPageList(@totalCnt, rowsPerPage)
+    if @current_page.to_i > @totalPageList.count
+      @current_page = @totalPageList.count
+    end
+
+    @books = @books.page(@current_page).per(rowsPerPage)
     @books.each do |book|
       doc = Nokogiri::XML(open('http://book.interpark.com/api/search.api?key=BB76C57E2E5D09210AD11705A6102C4A9F469F0EA24C2BAF365CCF8A0DF81BCB&query=' + book.isbn + '&queryType=isbn'))  
       book.data = {cover: doc.xpath("//item[1]/coverLargeUrl").text, 
                    description: doc.xpath("//item/description").text }
     end
   end
-
-  def search
-    logger.info params
-
-    search_type = params["search_type"]
-    search_query = params["search_query"]
-
-    if (search_type == "title") # 책 이름일 경우 
-      @books = Book.where("title like '%#{search_query}%'")
-    else # 작가일 경우 
-      @books = Book.where("author like '%#{search_query}%'")
-    end 
-
-    @books.each do |book|
-      doc = Nokogiri::XML(open('http://book.interpark.com/api/search.api?key=BB76C57E2E5D09210AD11705A6102C4A9F469F0EA24C2BAF365CCF8A0DF81BCB&query=' + book.isbn + '&queryType=isbn'))  
-      book.data = {cover: doc.xpath("//item[1]/coverLargeUrl").text, 
-                   description: doc.xpath("//item/description").text }
-    end 
-  end 
-
+  
   private
   def book_params
     params.require(:book).permit(:isbn)

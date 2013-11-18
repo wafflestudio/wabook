@@ -7,16 +7,18 @@
         <th class = "th3">author</th>
         <th class = "th4">publisher</th>
         <th class = "th5">available</th>
+        <% if current_user.is_admin %>
+          <th class = "th6">Delete</th>
+        <% end %>
       </tr>
     </thead>
   </table>
-    <% if @books.count > 0 %>
-      <% @books.each do |book| %>
-        <table class="table">
-
-        <tr>
+  <% if @books.count > 0 %>
+    <% @books.each do |book| %>
+      <table class="table">
+        <tr data-book_id = "<%= book.id %>">
           <td class = "td1"><%= book.category %></td>
-          <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
+          <td class= "book-title td2" data-book_id="<%= book.id%>"><%= book.title %></td>
           <td class = "td3"> <%= book.author %></td>
           <td class = "td4"><%= book.publisher %></td>
           <% if book.returned %>
@@ -24,19 +26,22 @@
           <% else %>
             <td class = "td5"><%= link_to "<button>unavailable</button>".html_safe, root_path %> </td>
           <% end %>
+          <% if current_user.is_admin %>
+            <td class = "td6"><button class="delete" >delete</button> </td>
+          <% end %>
         </tr>
-        </table>
-            <div class = "book-content" id= "<%= book.id %>", hidden='yes' >
-              <img src=<%= book.data[:cover] %>>
-              <p id="title"><%= book.title %></p>
-              <p id="author"><%= book.author %></p>
-              <p id="category"><%= book.category %></p>
-              <p id="publisher"><%= book.publisher %></p>
-              <p id="description"><%= book.data[:description] %></p>
-            </div>
-      <% end %>
+      </table>
+      <div class = "book-content" id="book_data_<%= book.id %>", hidden='yes' >
+        <img src=<%= book.data[:cover] %>>
+        <p id="title"><%= book.title %></p>
+        <p id="author"><%= book.author %></p>
+        <p id="category"><%= book.category %></p>
+        <p id="publisher"><%= book.publisher %></p>
+        <p id="description"><%= book.data[:description] %></p>
+      </div>
     <% end %>
-  </table>
+  <% end %>
+</table>
 </div>
 
 <div class="search">

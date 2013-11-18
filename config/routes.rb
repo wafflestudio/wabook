@@ -13,6 +13,7 @@ Wabook::Application.routes.draw do
   get '/rank' => 'users#rank'
   get '/search' => "books#search"
   get '/prolong/:id' => 'users#prolong'
+  get '/delete_book/:id' => 'books#delete_book'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

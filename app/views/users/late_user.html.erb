@@ -11,16 +11,16 @@
     <th> overdued date </th>
   </tr>
 
-  <tr>
-    <% @users.each do |user| %>
+  <% @users.each do |user| %>
+    <tr>
       <td> <%= user.name %> </td>
       <td> <%= user.email %> </td>
       <% @books[user].each do |book| %>
-        <th> <%= book.title %> </th>
-        <th> <%= book.checkouts.last.duedate %> </th>
-        <th> <%= Time.now+9.hours - book.checkouts.last.duedate %> </th>
+        <td> <%= book.title %> </td>
+        <td> <%= book.checkouts.last.duedate %> </td>
+        <td> <%= Time.now+9.hours - book.checkouts.last.duedate %> </td>
       <% end %>
-    <%end %>
-  </tr>
+    </tr>
+  <%end %>
 </table>
 

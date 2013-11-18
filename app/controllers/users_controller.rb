@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @books = {}
     @users = @checkouts.map{ |c| c.user }
     @users.each do |u|
-      @books[u] = u.checkouts.map { |c| c.book }
+      @books[u] = u.checkouts.select{|c| c.returned == false}.map { |c| c.book }
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @books = {}
     @users = @checkouts.map{ |c| c.user }
     @users.each do |u|
-      @books[u] = u.checkouts.map { |c| c.book }
+      @books[u] = u.checkouts.select{|c| c.returned == false}.map { |c| c.book }
     end
   end
 end

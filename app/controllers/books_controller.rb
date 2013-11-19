@@ -68,6 +68,7 @@ class BooksController < ApplicationController
     end
 
     @checkouts = Checkout.all
+    Rails.logger.info "book"
     @checkouts = @checkouts.select {|c| c.user_id == current_user.id and c.book.isbn == book_params[:isbn] and c.returned == false}
 
     if @checkouts.count == 0 

@@ -6,19 +6,13 @@
     <th> 이름 </th>
     <th> 읽은 권수 </th>
   </tr>
-  <tr>
-    <td> 1 </td>
-    <td> 임애란</td>
-    <td> 5 </td>
-  </tr>
-  <tr>
-    <td> 2 </td>
-    <td> 주신영 </td>
-    <td> 3 </td>
-  </tr>
-  <tr>
-    <td> 1 </td>
-    <td> 최석원 </td>
-    <td> 1 </td>
-  </tr>
+  <% order = 1 %>
+  <% @users.each do |u| %>
+    <tr>
+      <td> <%= order %> </td>
+      <td> <%= u.name %> </td>
+      <td> <%= u.point %> </td>
+    </tr>
+    <% order = order + 1 %>
+  <% end %>
 </table>

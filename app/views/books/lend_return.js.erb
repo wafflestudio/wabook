@@ -34,6 +34,9 @@
     <% else %>
         alert("<%= @book.title %>을(를) 반납하셨습니다")
     <% end %> 
+      <% @user= @checkout.user %>
+      <% @user.point = @user.point + 1 %>
+      <% @user.save %>
 //  }else{
 //    alert("반납을 취소하셨습니다")
 //  }

@@ -26,6 +26,10 @@ class UsersController < ApplicationController
   end
 
   def rank
+    @users = User.all
+    @users.sort! {|x, y| y.point <=> x.point}
+    @users = @users.take(5)
+    
   end
 
   def lend_user

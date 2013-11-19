@@ -2,6 +2,8 @@ $(document).ready(function(){
   $("td.book-title").click(function(){
     var book_id = $(this).parent().data("book_id");
     $("#book_data_" + book_id).slideToggle("slow");
+    console.log($(this).parent())
+    console.log(book_id)
     //$(this).data("book_id").slideToggle("slow");
   }); 
 

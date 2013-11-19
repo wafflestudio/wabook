@@ -1,22 +1,24 @@
-<%= link_to "All Users  ", users_path, :class=>"link"%>
-<%= link_to "Lending Users  ", :controller => 'users', :action => 'lend_user', :class=> "link"%>
-<%= link_to "Overdue Users", :controller => 'users', :action => 'late_user', :class=> "link"%>
+<div class = "user-list">
+  <%= link_to "All Users  ", users_path%>
+  <%= link_to "Lending Users  ", { :controller => 'users', :action => 'lend_user'}, :class =>"isSelected" %>
+  <%= link_to "Overdue Users", {:controller => 'users', :action => 'late_user'}%>
 
-<table class="table">
-  <tr>
-    <th> name </th>
-    <th> email </th>
-    <th> lending book</th>
-    <th> return due </th>
-  </tr>
-  <% @users.each do |user| %>
+  <table class="table">
     <tr>
-      <td> <%= user.name %> </td>
-      <td> <%= user.email %> </td>
-      <% @books[user].each do |book| %>
-        <td> <%= book.title %> </td>
-        <td> <%= book.checkouts.last.duedate %> </td>
-      <% end %>
+      <th> name </th>
+      <th> email </th>
+      <th> lending book</th>
+      <th> return due </th>
     </tr>
-  <% end %>
-</table>
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+        <% @books[user].each do |book| %>
+          <td> <%= book.title %> </td>
+          <td> <%= book.checkouts.last.duedate %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

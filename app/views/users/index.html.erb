@@ -1,7 +1,7 @@
 <div class="user-list">
-  <%= link_to "All Users  ", users_path, :class=>"link"%>
-  <%= link_to "Lending Users  ", :controller => 'users', :action => 'lend_user', :class => "link" %>
-  <%= link_to "Overdue Users", :controller => 'users', :action => 'late_user', :class => "link" %>
+  <%= link_to "All Users  ", users_path, :class=>"isSelected"%>
+  <%= link_to "Lending Users  ",{ :controller => 'users', :action => 'lend_user' }%>
+  <%= link_to "Overdue Users", {:controller => 'users', :action => 'late_user'}%>
   <table class="table">
     <tr>
       <th> name </th>

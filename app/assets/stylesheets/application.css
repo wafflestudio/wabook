@@ -46,6 +46,9 @@ a {
 a:hover {
   color:#FF1493;
 }
+a.isSelected {
+  color:blue;
+}
 
 .main-page{
   margin-top: 20px;

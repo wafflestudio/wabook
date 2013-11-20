@@ -126,3 +126,8 @@ a.isSelected {
 .description {
   margin-top: 15px;
 }
+
+div.hide {
+  position: fixed;
+  top: -100%;
+}

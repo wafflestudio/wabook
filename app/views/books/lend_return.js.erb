@@ -1,4 +1,5 @@
 <% if @bookNotExist %>
+    window.location = "http://services.snu.ac.kr:4123"
     alert("등록되지 않은 도서입니다. 관리자에게 문의해주시기 바랍니다");
 <% elsif @lendBook %>
 //  var r = confirm(" <%= @book.title %>을(를) 빌리시겠습니까?")

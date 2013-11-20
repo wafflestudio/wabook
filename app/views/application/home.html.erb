@@ -1,14 +1,16 @@
+<%= javascript_include_tag 'main' %>
+
 <div class = "main-page">
   <h1> <%= @user.name %> 님 안녕하세요^o^ </h1>
   <h2> 대여 혹은 반납을 원하시는 도서를 바코드리더기에 읽혀주세요 </h2>
   </br>
   <%= form_for(@book, :remote => true, :url => '/lend_return') do |f| %>
-    <div class="field">
+    <div class="hide field" id="focus">
       <%= f.label :isbn %>
       <%= f.text_field :isbn %>
     </div>
     </br>
-    <div class="actions">
+    <div class="hide actions">
       <%= f.submit %>
     </div>
   <% end %>

@@ -123,6 +123,7 @@ class BooksController < ApplicationController
     else 
       @books = Book.all
     end
+#    @books = @books.sort { |x, y| x.title <=> y.title }
 
     @current_page = params[:current_page]
     @totalCnt = @books.count

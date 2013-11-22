@@ -1,17 +1,17 @@
 <div class="top-nav">
   <% if signed_in? %>
     <% if current_user.is_admin %>
-      <%= link_to "Add new book", new_book_path, :class =>"link" %>
-      <%= link_to "User list", users_path, :class=>"link"%>
+      <%= link_to "Add new book", new_book_path%>
+      <%= link_to "User list", users_path%>
     <% end %>
-    <%= link_to "Lend/Return", root_path, :class => "link"%>
-    <%= link_to "Book list", books_path, :class => "link" %>
-    <%= link_to "Hall of Fame", :controller => 'users', :action => 'rank', :class =>"link" %>
-    <%= link_to "My Page", user_path(current_user), :class =>"link" %>
-    <%= link_to "logout", destroy_user_session_path, :method => :delete, :class =>"link" %>  
+    <%= link_to "Lend/Return", root_path%>
+    <%= link_to "Book list", books_path, :class => "blink" %>
+    <%= link_to "Hall of Fame", :controller => 'users', :action => 'rank'%>
+    <%= link_to "My Page", user_path(current_user), :class =>"blink" %>
+    <%= link_to "logout", destroy_user_session_path, :method => :delete%>  
   <% else %>
     <div style="display:none">
-      <%= link_to "login", new_user_session_path, :method => :create, :class => "link" %>
+      <%= link_to "login", new_user_session_path, :method => :create%>
     </div>
   <% end %>
 </div>

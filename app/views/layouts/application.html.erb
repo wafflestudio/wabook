@@ -1,10 +1,11 @@
-<%= render 'layouts/header' %>
-<%= render 'layouts/top_menu' %>
-<div>
-<%= link_to root_path, :class => "logo" do %>
-  <%= image_tag "wabook.png" %>
-<% end %>
+<div id=wrap>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/top_menu' %>
+  <div>
+    <%= link_to root_path, :class => "logo" do %>
+      <%= image_tag "wabook.png" %>
+    <% end %>
+  </div>
+  <%= yield %>
 </div>
-<%= yield %>
-
 <%= render 'layouts/footer' %>

@@ -9,6 +9,9 @@
   <% end %>
 
   <%= render 'form' %>
+  <% if @hasPrevious %>
+    <h4><%=@book_title %>  이 추가되었습니다 </h4>
+  <% end %>
 
   <%= link_to 'Back', books_path %>
 </div>

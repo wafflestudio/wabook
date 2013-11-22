@@ -12,6 +12,8 @@ class BooksController < ApplicationController
     @book = Book.new
     #    @isRegistered = params[:isRegistered]
     @incorrectISBN = params[:incorrectISBN]
+    @hasPrevious = params[:previous]
+    @book_title = params[:title]
     respond_to do |format|
       format.html { render :layout => 'main' }
     end
@@ -29,7 +31,7 @@ class BooksController < ApplicationController
     else
       @book = Book.new(getBookFromISBN(book_params[:isbn]))
       @book.save
-      redirect_to new_book_path
+      redirect_to :action => "new", :previous => true, :title => @book.title
     end
   end
 

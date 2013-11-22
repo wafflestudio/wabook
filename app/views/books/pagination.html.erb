@@ -32,7 +32,7 @@
           <% end %>
         </tr>
         </table>
-            <div id = "book_data_<%= book.id %>", hidden='yes' >
+            <div id = "book_data_<%= book.id %>" class = "book-content", hidden='yes' >
               <img src=<%= book.data[:cover] %>>
               <p class="description"><%= book.data[:description] %></p>
             </div>

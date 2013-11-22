@@ -1,9 +1,11 @@
+
+<%= javascript_include_tag 'main' %>
 <%= form_for(@book) do |f| %>
 	<div class="field">
 		<%= f.label :isbn %>
     <%= f.text_field :isbn %>
   </div>
-  <div class="actions">
+  <div class="actions hide">
 		<%= f.submit %>
 	</div>
 <% end %>

@@ -17,12 +17,12 @@
   font-family: 'Patrick Hand SC';
   vertical-align:middle;
   line-height: 21px;
+  color: #333333;
 }
-
-html, body{
+html, body {
   height: 100%;
 }
-body {
+body { 
   margin-top:0px;
   background-color:#f9f9f7;
   margin-left:auto;
@@ -35,7 +35,7 @@ body {
   margin: 0 auto -30px;
   padding: 0 0 30px;
 }
-.footer {
+#footer {
   float: left;
   font-size: 7px;
   height: 30px;
@@ -57,13 +57,13 @@ a {
   color: #72002E;
 }
 a.blink {
-  color:#FF1493;
+  color:#FF2666;
 }
 a:hover {
-  color:#FF1493;
+  color:#FF85A9;
 }
 a.isSelected {
-  color:blue;
+  color:#FF2666;
 }
 
 .main-page{
@@ -92,7 +92,7 @@ a.isSelected {
   width: 16%;
 }
 .table th{
-  background-color:#FA3273;
+  background-color:#FF2666;
 } 
 .table td, .table th{
   text-align: center;
@@ -108,7 +108,7 @@ a.isSelected {
   text-align: center;
 }
 .pageNum {
-  color:#FA3273;
+  color:#FF2666;
 }
 .search{
   text-align: center;

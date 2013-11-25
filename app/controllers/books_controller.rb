@@ -50,6 +50,13 @@ class BooksController < ApplicationController
    render :json => {status: "OK"}
   end
 
+  def unavailable_book 
+    @book = Book.find(params[:id])
+    Rails.logger.info @book.title
+    @user = @book.checkouts.last.user
+    Rails.logger.info @user.name
+    render :json => {user: @user.name}
+  end
   def update
   end
 
@@ -146,6 +153,7 @@ class BooksController < ApplicationController
                    description: doc.xpath("//item/description").text }
     end
   end
+  
   
   private
   def book_params

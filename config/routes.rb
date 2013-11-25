@@ -14,6 +14,7 @@ Wabook::Application.routes.draw do
   get '/search' => "books#pagination"
   get '/prolong/:id' => 'users#prolong'
   get '/delete_book/:id' => 'books#delete_book'
+  get '/unavailable_book/:id' => 'books#unavailable_book'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

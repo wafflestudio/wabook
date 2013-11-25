@@ -4,7 +4,7 @@
       <% if signed_in? %>
         <% if current_user.is_admin %>
           <%= link_to "Add new book", new_book_path%>
-          <%= link_to "User list", users_path%>
+          <%= link_to "User list", users_path, :class => "blink" %>
         <% end %>
         <%= link_to "Lend/Return", root_path%>
         <%= link_to "Book list", books_path, :class => "blink" %>

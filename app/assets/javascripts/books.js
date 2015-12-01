@@ -22,7 +22,7 @@ $(document).ready(function(){
   })
 
   $("button.available").click(function(){
-    window.location = "http://services.snu.ac.kr:4123";
+    window.location = "/";
   })
   $("button.unavailable").click(function(){
     var book_id = $(this).parent().parent().data("book_id");

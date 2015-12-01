@@ -126,9 +126,9 @@ class BooksController < ApplicationController
     @search_query = params[:search_query]
 
     if (@search_type == "title") # 책 이름일 경우 
-      @books = Book.where("title like '%#{@search_query}%'")
+      @books = Book.where("lower(title) like '%#{@search_query.downcase}%'")
     elsif (@search_type == "author") # 작가일 경우 
-      @books = Book.where("author like '%#{@search_query}%'")
+      @books = Book.where("lower(author) like '%#{@search_query.downcase}%'")
     else 
       @books = Book.all
     end

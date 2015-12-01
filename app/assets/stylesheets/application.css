@@ -140,3 +140,9 @@ div.hide {
   position: fixed;
   top: -100%;
 }
+
+button {
+  margin: 2px;
+  background: transparent;
+  border: 1px solid black;
+}

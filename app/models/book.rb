@@ -4,5 +4,5 @@ class Book < ActiveRecord::Base
 
   default_scope order('title')
 
-  has_many :checkouts
+  has_many :checkouts, :dependent => :destroy
 end

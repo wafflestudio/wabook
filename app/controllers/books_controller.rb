@@ -46,7 +46,7 @@ class BooksController < ApplicationController
 
   def delete_book
    @book = Book.find(params[:id]) 
-   @book.delete
+   @book.destroy
    render :json => {status: "OK"}
   end
 

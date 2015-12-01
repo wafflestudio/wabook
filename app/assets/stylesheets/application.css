@@ -55,6 +55,7 @@ font-size: 14px;
 a {
   text-decoration:none;
   color: #72002E;
+  margin-right: 3px;
 }
 a.blink {
   color:#FF2666;

@@ -14,8 +14,7 @@
     </thead>
     <% if @books.count > 0 %>
       <% @books.each do |book| %>
-
-          <tr data-book_id = "<%= book.id %>">
+        <tr data-book_id = "<%= book.id %>">
           <td class = "td1"><%= book.category %></td>
           <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
           <td class = "td3"> <%= book.author %></td>
@@ -29,10 +28,14 @@
             <td class = "td6"><button class="delete" >delete</button> </td>
           <% end %>
         </tr>
+        <tr>
+          <td colspan="6">
             <div id = "book_data_<%= book.id %>" class = "book-content", hidden='yes' >
               <img src=<%= book.data[:cover] %>>
               <p class="description"><%= book.data[:description] %></p>
             </div>
+          </td>
+        </tr>
       <% end %>
     <% end %>
   </table>

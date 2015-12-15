@@ -83,6 +83,9 @@ a.isSelected {
 .table .td2, .table .th2{
   width: 35%;
 }
+.table .book-title{
+  cursor: pointer;
+}
 .table .td3, .table .th3{
   width: 23%;
 }
@@ -118,7 +121,6 @@ a.isSelected {
 .search #search, #book_isbn {
   padding: 2px;
   font-size: 16px;
-
 }
 .new-book{
   text-align: center;

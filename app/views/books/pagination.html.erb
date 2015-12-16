@@ -17,7 +17,7 @@
         <tr data-book_id = "<%= book.id %>">
           <td class = "td1"><%= book.category %></td>
           <td class= "book-title td2" id="<%= book.id%>"><%= book.title %></td>
-          <td class = "td3"> <%= book.author %></td>
+          <td class = "td3"> <%= book.author != "" ? book.author : "NIL" %></td>
           <td class = "td4"><%= book.publisher %></td>
           <% if book.returned %>
             <td class = "td5"> <button book-id=<%= book.id %> class="available"> available </button> </td>
@@ -31,7 +31,7 @@
         <tr>
           <td colspan="6">
             <div id = "book_data_<%= book.id %>" class = "book-content", hidden='yes' >
-              <img src=<%= book.cover_url %>>
+              <img src="<%= book.cover_url %>" alt="no cover image">
               <p class="description"><%= book.description %></p>
             </div>
           </td>

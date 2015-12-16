@@ -46,8 +46,8 @@ module BooksHelper
 			book_data["category"] = "외국도서"
 			book_data["publisher"] = openlibrary_doc["publishers"][0]["name"]
 			book_data["returned"] = true
-			book_data["author"] = openlibrary_doc["authors"][0]["name"]
-			book_data["cover_url"] = openlibrary_doc["cover"]["medium"]
+			book_data["author"] = openlibrary_doc["authors"] ? openlibrary_doc["authors"][0]["name"] : ""
+			book_data["cover_url"] = openlibrary_doc["cover"] ? openlibrary_doc["cover"]["medium"] : ""
 			book_data["description"] = ""
 		else
 			return nil

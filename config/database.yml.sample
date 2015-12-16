@@ -19,7 +19,7 @@ development:
 test:
   adapter: postgresql
   encoding: utf-8
-  database: wabook
+  database: wabook-test
   pool: 5
   host: localhost
   username: wabook

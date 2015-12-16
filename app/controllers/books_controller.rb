@@ -20,16 +20,17 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @incorrectISBN = !isCorrectISBN?(book_params[:isbn])
+    @book = Book.new
+    book_data = getBookFromISBN(book_params[:isbn])
     @isRegistered = isRegistered?(book_params[:isbn])
 
-    if @incorrectISBN
+    if book_data == nil
+      @incorrectISBN = true
       render :action => "new", :incorrectISBN => true
       #    elsif @isRegistered
       #      render :action => "new", :isRegistered=> true
     else
-      @book = Book.new(getBookFromISBN(book_params[:isbn]))
+      @book = Book.new(book_data)
       @book.save
       redirect_to :action => "new", :previous => true, :title => @book.title
     end
@@ -147,11 +148,6 @@ class BooksController < ApplicationController
     end
 
     @books = @books.page(@current_page).per(rowsPerPage)
-    @books.each do |book|
-      doc = Nokogiri::XML(open('http://book.interpark.com/api/search.api?key=BB76C57E2E5D09210AD11705A6102C4A9F469F0EA24C2BAF365CCF8A0DF81BCB&query=' + book.isbn + '&queryType=isbn'))  
-      book.data = {cover: doc.xpath("//item[1]/coverLargeUrl").text, 
-                   description: doc.xpath("//item/description").text }
-    end
   end
   
   

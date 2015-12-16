@@ -13,9 +13,6 @@ gem 'rails', '4.0.0'
 gem 'thin'
 gem 'nokogiri'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-
 # Use postgres as the database for Active Record
 gem 'pg'
 

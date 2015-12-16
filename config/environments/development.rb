@@ -1,7 +1,11 @@
+require 'yaml'
+
 Wabook::Application.configure do
   #  Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { :host => 'http://dev.wafflestudio.net:3939' }
+  wabook = YAML.load_file("config/wabook-account.yml")
+
+  config.action_mailer.default_url_options = { :host => 'http://walnut.wafflestudio.net:10010' }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
@@ -9,7 +13,7 @@ Wabook::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name            => "wabook_admin@wafflestudio.com",
-    :password             => 'wabook4000',
+    :password             => wabook["password"],
     :authentication       => "plain",
     :enable_starttls_auto => true
   }

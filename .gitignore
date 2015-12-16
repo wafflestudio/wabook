@@ -17,5 +17,6 @@
 /log/*.log
 /tmp
 
-# config
-
+# confiog
+ # wabook account info
+/config/wabook-account.yml

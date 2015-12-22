@@ -57,7 +57,7 @@ a {
   color: #72002E;
   margin-right: 3px;
 }
-a.blink {
+.top-nav a:nth-child(2n) {
   color:#FF2666;
 }
 a:hover {

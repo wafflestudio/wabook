@@ -5,7 +5,7 @@ Wabook::Application.configure do
 
   wabook = YAML.load_file("config/wabook-account.yml")
 
-  config.action_mailer.default_url_options = { :host => 'http://walnut.wafflestudio.net:10010' }
+  config.action_mailer.default_url_options = { :host => 'http://wabook.wafflestudio.com' }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"

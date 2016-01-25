@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require users.js
-//= require books.js
+//= require main
+//= require users
+//= require books
 //

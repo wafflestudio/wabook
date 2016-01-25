@@ -20,3 +20,6 @@
 # confiog
  # wabook account info
 /config/wabook-account.yml
+
+# deploy
+/public/assets/*
